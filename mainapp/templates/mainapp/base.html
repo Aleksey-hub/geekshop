@@ -1,0 +1,84 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block title %}
+            {{ title|title }}
+        {% endblock %}
+    </title>
+    {% block style %}
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;700&display=swap"
+              rel="stylesheet">
+        <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}">
+        <link rel="stylesheet" href="{% static "css/style.css" %}">
+    {% endblock %}
+    {% block js %}
+        <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+        <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    {% endblock %}
+</head>
+
+<body>
+<div class="container">
+    {% block menu %}
+    {% endblock %}
+    {% block content %}
+    {% endblock %}
+    {% block footer %}
+        <div class="footer padding-site">
+            <div class="contact-us">
+                <h2 class="footer-h2">CONTACT US</h2>
+                <p class="footer-content">132A Bridge Road Richmond VIC Australia. <br><br>
+                    Talk to us on 1300 132
+                    info@interior.com
+                </p>
+            </div>
+
+            <div class="userful-information">
+                <h2 class="footer-h2">USEFUL INFORMATION</h2>
+                <ul class="userful-information-content-1">
+                    <li>ARCHITECT ACCOUNTS</li>
+                    <li>CAREERS</li>
+                    <li>EXCHANGES &amp; RETURNS</li>
+                </ul>
+                <ul class="userful-information-content-2">
+                    <li>SALES TERMS</li>
+                    <li>CUSTOMER CARE</li>
+                    <li>DELIVERY</li>
+                </ul>
+            </div>
+
+            <div class="feedback">
+                <h2 class="footer-h2">LET’S STAY IN TOUCH!</h2>
+                <p class="footer-content">
+                    Suscribe to know about our latest news, products and special offers just for suscribers.
+                </p>
+                <div class="send">
+                    <form action="#">
+                        <input type="text" placeholder="your email address" class="send-text">
+                        <input type="submit" value="&#xe800;" class="submit-send icon-paper-plane-1">
+                    </form>
+                </div>
+            </div>
+            <div class="copyright-1">
+                &copy; COPYRIGHT - INTERIOR {% now 'Y' %}. ALL RIGHTS RESERVED.
+            </div>
+            <div class="social-links">
+                <a href="#" class="social-link icon-facebook-circled-1"></a>
+                <a href="#" class="social-link icon-twitter-circled-1"></a>
+                <a href="#" class="social-link icon-gplus-circled-1"></a>
+                <a href="#" class="social-link icon-pinterest-circled"></a>
+            </div>
+            <div class="copyright-2">
+                TERMS &amp; CONDITIONS / PRIVACY POLICY &amp; COOKIES
+            </div>
+        </div>
+    {% endblock %}
+</div>
+</body>
+
+</html>

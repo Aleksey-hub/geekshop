@@ -1,0 +1,127 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+{% block menu %}
+    <div class="slider padding-site">
+        <div class="header">
+            <a href="{% url 'main' %}">
+                <img src="{% static "img/logo.svg" %}">
+            </a>
+            {% include 'mainapp/includes/inc_main_menu.html' %}
+        </div>
+        <div class="slider-text">
+            <p class="slider-trending">TRENDING</p>
+            <h2 class="slider-h2">FISHNET CHAIR</h2>
+            <p class="slider-content">Seat and back with upholstery made of cold cure foam. Steel frame, available in
+                matt powder-coated black or highly polished chrome.</p>
+            <a href="{% url 'products:product' 1 %}" class="button">ORDER US </a>
+        </div>
+        <div class="pagination">
+            <a href="#" class="circle"></a>
+            <a href="#" class="circle circle-active"></a>
+            <a href="#" class="circle"></a>
+        </div>
+    </div>
+{% endblock %}
+{% block content %}
+    <div class="featured-product padding-site">
+        <ul class="featured-product-menu">
+            <li class="featured-product-menu-list featured-product-menu-list-active"><a href="#">Featured</a></li>
+            <li class="featured-product-menu-list"><a href="#">New</a></li>
+        </ul>
+        <a href="#" class="explore-all">EXPLORE ALL </a>
+        <div class="clear-fix"></div>
+        {% for product in products %}
+            <div class="featured-product-content">
+                <img src="/media/{{ product.image }}" alt="product">
+                <a href="{% url 'products:product' product.pk %}" class="featured-product-content-link">
+                    <div><img src="{% static "img/arrow.svg" %}" alt=">"></div>
+                    <h5>{{ product.name }}</h5>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="promo-product">
+        <div class="promo promo-1">
+            <p class="promo-trending">EXCLUSIVE</p>
+            <h2 class="promo-h2">FISHNET CHAIR</h2>
+            <p class="promo-content">Seat and back with upholstery made of cold cure foam. Steel frame, available in
+                matt powder-coated black or highly polished chrome.</p>
+            <a href="{% url 'products:product' 1 %}" class="button button-promo">ORDER US </a>
+        </div>
+
+        <div class="promo promo-2">
+            <p class="promo-trending">EXCLUSIVE</p>
+            <h2 class="promo-h2">FISHNET CHAIR</h2>
+            <p class="promo-content">Seat and back with upholstery made of cold cure foam. Steel frame, available in
+                matt powder-coated black or highly polished chrome.</p>
+            <a href="{% url 'products:product' 1 %}" class="button button-promo">ORDER US </a>
+        </div>
+    </div>
+
+    <div class="trending-products padding-site">
+        <h2 class="trending-products-h2">Trending Products</h2>
+        <a href="#" class="explore-all">EXPLORE ALL </a>
+        <div class="clear-fix"></div>
+
+        <a href="{% url 'products:product' 1 %}" class="trending-products-content"><img
+                src="{% static "img/product-11.jpg" %}" alt="product"></a>
+        <a href="{% url 'products:product' 1 %}" class="trending-products-content"><img
+                src="{% static "img/product-10.jpg" %}" alt="product"></a>
+        <a href="{% url 'products:product' 1 %}" class="trending-products-content"><img
+                src="{% static "img/product-9.jpg" %}" alt="product"></a>
+        <a href="{% url 'products:product' 1 %}" class="trending-products-content"><img
+                src="{% static "img/product-8.jpg" %}" alt="product"></a>
+        <a href="{% url 'products:product' 1 %}" class="trending-products-content"><img
+                src="{% static "img/product-7.jpg" %}" alt="product"></a>
+        <a href="{% url 'products:product' 1 %}" class="trending-products-content"><img
+                src="{% static "img/product-6.jpg" %}" alt="product"></a>
+    </div>
+
+    <div class="hot-deals padding-site">
+        <div class="hot-deals-text">
+            <p class="hot-deals-trending">HOT DEAL</p>
+            <h2 class="hot-deals-h2">FISHNET CHAIR</h2>
+            <p class="hot-deals-content">Seat and back with upholstery made of cold cure foam. Steel frame, available in
+                matt powder-coated black or highly polished chrome.</p>
+            <a href="{% url 'products:product' 1 %}" class="button">ORDER US </a>
+        </div>
+        <div class="pagination">
+            <a href="#" class="circle"></a>
+            <a href="#" class="circle circle-active"></a>
+            <a href="#" class="circle"></a>
+        </div>
+    </div>
+
+    <div class="exclusive-product padding-site">
+        <div class="exclusive-product-1">
+            <p class="exclusive-product-trending">EXCLUSIVE</p>
+            <h2 class="exclusive-product-h2">FISHNET CHAIR</h2>
+            <p class="exclusive-product-content">Seat and back with upholstery made of cold cure foam. Steel frame,
+                available in matt powder-coated black or highly polished chrome.</p>
+            <a href="{% url 'products:product' 1 %}" class="button button-exclusive-product">ORDER US </a>
+        </div>
+
+        <a href="{% url 'products:product' 1 %}" class="exclusive-products-content"><img
+                src="{% static "img/product-5.jpg" %}" alt="product"></a>
+        <a href="{% url 'products:product' 1 %}" class="exclusive-products-content"><img
+                src="{% static "img/product-14.jpg" %}" alt="product"></a>
+        <a href="{% url 'products:product' 1 %}" class="exclusive-products-content"><img
+                src="{% static "img/product-13.jpg" %}" alt="product"></a>
+        <a href="{% url 'products:product' 1 %}" class="exclusive-products-content"><img
+                src="{% static "img/product-12.jpg" %}" alt="product"></a>
+    </div>
+
+    <div class="mobile-app padding-site">
+        <p class="mobile-app-trending">MOBILE APP</p>
+        <h2 class="mobile-app-h2">
+            FIND.<br> FOLLOW.
+            <!--FAVORITE. DISCOVER BRANDS ON THE GO.-->
+        </h2>
+
+        <p class="mobile-app-content">Save your favorites and share your style.</p>
+        <a href="#" class="button-mobile-app"><img src="{% static "img/app-store.png" %}" alt="app-store"></a>
+        <a href="#" class="button-mobile-app"><img src="{% static "img/google-play.png" %}" alt="google-play"></a>
+
+    </div>
+{% endblock %}

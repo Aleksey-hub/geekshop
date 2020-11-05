@@ -1,0 +1,90 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+{% block menu %}
+    <div class="header-all padding-site">
+        <div class="header">
+            <a href="{% url 'main' %}">
+                <img src="/static/img/logo.svg" alt="logo">
+            </a>
+            {% include 'mainapp/includes/inc_main_menu.html' %}
+        </div>
+        <h1 class="header-h1">Our Products Range</h1>
+    </div>
+{% endblock %}
+{% block content %}
+    <div class="products padding-site clear-fix">
+
+        {% include 'mainapp/includes/inc_products_menu.html' %}
+
+        <div class="products-details-content">
+            <img class="product-image" src="/media/{{ hot_product.image }}" alt="product">
+            <div class="mini-image">
+
+                <img src="/media/{{ hot_product.image }}" alt="product-1">
+
+
+                <img src="/media/{{ hot_product.image }}" alt="product-2">
+
+                <img src="/media/{{ hot_product.image }}" alt="product-3">
+
+            </div>
+        </div>
+        <div class="products-details-content">
+            <h2>{{ hot_product.name|title }}</h2>
+            <h6>HOT DEAL</h6>
+            <h4><span>{{ hot_product.price }}</span> руб.</h4>
+            <a href="{% url 'basket:add' hot_product.pk %}" class="button button-product">ORDER US </a>
+            {{ hot_product.description }}
+        </div>
+
+    </div>
+
+
+    <div class="related-products padding-site">
+        <h2 class="related-products-h2">Related Products</h2>
+        <a href="#" class="explore-all related-products-explore-all">EXPLORE ALL </a>
+        <div class="clear-fix"></div>
+        <!-- <a href="#" class="products-content"><img src="/static/img/product-11.jpg" alt="product"></a>
+        <a href="#" class="products-content"><img src="/static/img/product-10.jpg" alt="product"></a>
+        <a href="#" class="products-content"><img src="/static/img/product-9.jpg" alt="product"></a> -->
+        {% for product in same_products %}
+            <div class="featured-product-content">
+                <img src="/media/{{ product.image }}" alt="product">
+                <a href="{% url 'products:product' product.pk %}" class="featured-product-content-link">
+                    <div><img src="{% static "img/arrow.svg" %}" alt=">"></div>
+                    <h5>{{ product.name }}</h5>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+
+    <!-- {% for product in products %}
+        <div class="featured-product-content">
+            <img src="/media/{{ product.image }}" alt="product">
+            <a href="{% url 'basket:basket_add' product.pk %}" class="featured-product-content-link">
+                <div><img src="{% static "img/arrow.svg" %}" alt=">"></div>
+                <h5>{{ product.name }}</h5>
+            </a>
+        </div>
+    {% endfor %} -->
+    <div class="clear-fix"></div>
+    <div class="refresh">&#xe802;</div>
+
+    <div class="promo-product">
+        <div class="promo promo-1">
+            <p class="promo-trending">EXCLUSIVE</p>
+            <h2 class="promo-h2">FISHNET CHAIR</h2>
+            <p class="promo-content">Seat and back with upholstery made of cold cure foam. Steel frame, available in
+                matt powder-coated black or highly polished chrome.</p>
+            <a href="{% url 'products:product' 1 %}" class="button button-promo">ORDER US </a>
+        </div>
+
+        <div class="promo promo-2">
+            <p class="promo-trending">EXCLUSIVE</p>
+            <h2 class="promo-h2">FISHNET CHAIR</h2>
+            <p class="promo-content">Seat and back with upholstery made of cold cure foam. Steel frame, available in
+                matt powder-coated black or highly polished chrome.</p>
+            <a href="{% url 'products:product' 1 %}" class="button button-promo">ORDER US </a>
+        </div>
+    </div>
+{% endblock %}

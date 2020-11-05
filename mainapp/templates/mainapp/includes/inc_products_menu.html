@@ -1,0 +1,10 @@
+<ul class="product-menu clear-fix">
+    <li class="product-menu-list {% if request.resolver_match.kwargs.pk == 0 %}product-menu-list-active{% endif %}">
+        <a href="{% url 'products:category' 0 %}">все</a>
+    </li>
+    {% for item in links_menu %}
+        <li class="product-menu-list {% if request.resolver_match.kwargs.pk == item.pk %}product-menu-list-active{% endif %}">
+            <a href="{% url 'products:category' item.pk %}">{{ item.name }}</a>
+        </li>
+    {% endfor %}
+</ul>

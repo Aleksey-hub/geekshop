@@ -1,0 +1,6 @@
+Django==2.2
+Pillow==8.0.0
+pytz==2020.1
+sqlparse==0.4.1
+social-auth-app-django==4.0.0
+requests==2.24.0

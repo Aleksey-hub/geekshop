@@ -1,0 +1,66 @@
+{% load static %}
+<ul class="menu">
+    <li class="menu-list menu-list-1"><a href="{% url 'main' %}"
+                                         class="menu-link {% if request.resolver_match.url_name == 'main' %}menu-link-active{% endif %}">HOME</a>
+    </li>
+    <li class="menu-list menu-list-2"><a href="{% url 'products:index' %}"
+                                         class="menu-link {% if request.resolver_match.namespace == 'products' %}menu-link-active{% endif %}">PRODUCTS</a>
+    </li>
+    <li class="menu-list menu-list-3"><a href="#"
+                                         class="menu-link {% if request.resolver_match.url_name == '' %}menu-link-active{% endif %}">HISTORY</a>
+    </li>
+    <li class="menu-list menu-list-4"><a href="#"
+                                         class="menu-link {% if request.resolver_match.url_name == '' %}menu-link-active{% endif %}">SHOWROOM</a>
+    </li>
+    <li class="menu-list menu-list-5"><a href="{% url 'contact' %}"
+                                         class="menu-link {% if request.resolver_match.url_name == 'contact' %}menu-link-active{% endif %}">CONTACT</a>
+    </li>
+    <li class="menu-list menu-list-6"><a href="#" class="menu-link"><img src="{% static "img/search.svg" %}"
+                                                                         alt="search"></a></li>
+    {% if user.is_authenticated %}
+        <li class="menu-list menu-list-4">
+            <div class="dropdown">
+                <a class="dropdown-toggle menu-link" href="" data-toggle="dropdown">
+                    {{ user.first_name|default:'Пользователь' }}
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a href="{% url 'auth:edit' %}">
+                            профиль
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'order:orders_list' %}">
+                            заказы
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+        {% if user.is_superuser %}
+            <li class="menu-list menu-list-3">
+                <a class="menu-link" href="{% url 'admin:users' 1 %}">АДМИНКА</a>
+            </li>
+        {% endif %}
+        <li class="menu-list menu-list-1">
+            <a class="menu-link" href="{% url 'auth:logout' %}">ВЫЙТИ</a>
+        </li>
+    {% else %}
+        <li class="menu-list menu-list-1">
+            <a class="menu-link" href="{% url 'auth:login' %}">ВОЙТИ</a>
+        </li>
+    {% endif %}
+
+    <li class="menu-list menu-list-4">
+        <a href="{% url 'basket:basket' %}" class="menu-link icon-basket">
+            <sub>
+                <!-- {% if basket %} {{ basket|length }} {% endif %} -->
+                {% if basket %}
+                    {{ basket.0.total_cost|floatformat:0 }} руб.
+                    ({{ basket.0.total_quantity }} шт.)
+                {% endif %}
+            </sub>
+        </a>
+    </li>
+</ul>
