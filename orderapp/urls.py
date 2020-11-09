@@ -13,8 +13,3 @@ urlpatterns = [
     path('update/<pk>/', orderapp.OrderItemsUpdate.as_view(), name='order_update'),
     path('delete/<pk>/', orderapp.OrderDelete.as_view(), name='order_delete'),
 ]
-
-if settings.DEBUG:
-    import debug_toolbar
-
-    urlpatterns += [path('__debug__/', include(debug_toolbar.urls))]
