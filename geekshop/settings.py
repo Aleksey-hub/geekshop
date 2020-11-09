@@ -95,8 +95,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'geekshop',
-        'USER': 'django',
-        'PASSWORD': 'geekbrains',
+        'USER': 'postgres',
+        # 'USER': 'django',
+        # 'PASSWORD': 'geekbrains',
     }
 }
 
@@ -190,6 +191,7 @@ SOCIAL_AUTH_PIPELINE = (
 if DEBUG:
     def show_toolbar(request):
         return True
+
 
     DEBUG_TOOLBAR_CONFIG = {
         'SHOW_TOOLBAR_CALLBACK': show_toolbar,
