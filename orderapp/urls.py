@@ -1,6 +1,7 @@
-from django.urls import path
+from django.urls import path, include
 
 import orderapp.views as orderapp
+from geekshop import settings
 
 app_name = 'orderapp'
 
@@ -12,3 +13,8 @@ urlpatterns = [
     path('update/<pk>/', orderapp.OrderItemsUpdate.as_view(), name='order_update'),
     path('delete/<pk>/', orderapp.OrderDelete.as_view(), name='order_delete'),
 ]
+
+if settings.DEBUG:
+    import debug_toolbar
+
+    urlpatterns += [path('__debug__/', include(debug_toolbar.urls))]
