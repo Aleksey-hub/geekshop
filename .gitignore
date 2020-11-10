@@ -9,3 +9,4 @@ venv
 env
 ./.env
 run.bat
+django2.2/
