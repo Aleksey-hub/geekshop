@@ -108,7 +108,7 @@ class OrderItemsUpdate(UpdateView):
 
     @method_decorator(login_required())
     def dispatch(self, *args, **kwargs):
-        return super(CreateView, self).dispatch(*args, **kwargs)
+        return super(UpdateView, self).dispatch(*args, **kwargs)
 
 
 class OrderDelete(DeleteView):
