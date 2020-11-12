@@ -94,7 +94,7 @@ def register(request):
     }
     return render(request, 'authapp/register.html', content)
 
-@method_decorator(login_required())
+# @method_decorator(login_required())
 @transaction.atomic()
 def edit(request):
     title = 'редактирование'
