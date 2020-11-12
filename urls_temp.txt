@@ -8,6 +8,7 @@ http://5.63.157.18/products/category/4/
 http://5.63.157.18/basket/
 http://5.63.157.18/order/
 http://5.63.157.18/auth/edit/
+http://5.63.157.18/auth/register/
 http://5.63.157.18/order/update/30/
 http://5.63.157.18/order/update/29/
 http://5.63.157.18/order/update/27/
