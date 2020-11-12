@@ -6,6 +6,7 @@ from django.db import transaction
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
+from django.views.decorators.csrf import csrf_exempt
 
 from authapp.forms import ShopUserLoginForm, ShopUserRegisterForm, ShopUserEditForm, ShopUserProfileEditForm
 from authapp.models import ShopUser
@@ -32,7 +33,7 @@ def verify(request, email, activation_key):
         print(e.args)
         return HttpResponseRedirect(reverse('main'))
 
-
+@csrf_exempt
 def login(request):
     title = 'вход'
 
