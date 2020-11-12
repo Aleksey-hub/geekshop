@@ -1,10 +1,12 @@
 from django.conf import settings
 from django.contrib import auth, messages
+from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail
 from django.db import transaction
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
+from django.utils.decorators import method_decorator
 
 from authapp.forms import ShopUserLoginForm, ShopUserRegisterForm, ShopUserEditForm, ShopUserProfileEditForm
 from authapp.models import ShopUser
@@ -92,7 +94,7 @@ def register(request):
     }
     return render(request, 'authapp/register.html', content)
 
-
+@method_decorator(login_required())
 @transaction.atomic()
 def edit(request):
     title = 'редактирование'

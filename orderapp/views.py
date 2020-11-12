@@ -116,6 +116,10 @@ class OrderRead(DetailView):
         context['title'] = 'заказ/просмотр'
         return context
 
+    @method_decorator(login_required())
+    def dispatch(self, *args, **kwargs):
+        return super(DetailView, self).dispatch(*args, **kwargs)
+
 
 def order_forming_complete(request, pk):
     order = get_object_or_404(Order, pk=pk)
