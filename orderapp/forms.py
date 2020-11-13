@@ -24,7 +24,7 @@ class OrderItemForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(OrderItemForm, self).__init__(*args, **kwargs)
-        self.fields['product'].queryset = OrderItem.get_item().select_related()
+        self.fields['product'].queryset = OrderItem.get_items().select_related()
         # print(f'self.fields["product"]: {self.fields["product"]}')
         # print(f'self.fields["product"].queryset: {self.fields["product"].queryset}')
         for field_name, field in self.fields.items():

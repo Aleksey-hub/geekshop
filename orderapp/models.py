@@ -77,3 +77,7 @@ class OrderItem(models.Model):
     @staticmethod
     def get_item(pk):
         return OrderItem.objects.get(pk=pk)
+
+    @staticmethod
+    def get_items():
+        return OrderItem.objects.all()
