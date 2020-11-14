@@ -5,6 +5,7 @@ def basket(request):
     basket_items = []
     if request.user.is_authenticated:
         basket_items = Basket.objects.filter(user=request.user).select_related()
+        # basket_items = Basket.get_items_cached
 
     return {
         'basket': basket_items
