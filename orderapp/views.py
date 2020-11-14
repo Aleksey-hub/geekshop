@@ -18,8 +18,8 @@ class OrderList(ListView):
     model = Order
 
     def get_queryset(self):
-        # return Order.objects.filter(user=self.request.user)
-        return Order.objects.filter(user=self.request.user).select_related()
+        return Order.objects.filter(user=self.request.user)
+        # return Order.objects.filter(user=self.request.user).select_related()
 
     @method_decorator(login_required())
     def dispatch(self, *args, **kwargs):
@@ -80,7 +80,6 @@ class OrderItemsUpdate(UpdateView):
 
     def get_context_data(self, **kwargs):
         data = super(OrderItemsUpdate, self).get_context_data(**kwargs)
-        data['product'] = OrderItem.get_items().select_related()
 
         OrderFormSet = inlineformset_factory(Order, OrderItem, form=OrderItemForm, extra=1)
         if self.request.POST:
