@@ -119,7 +119,7 @@ def products(request, pk=None, page=1):
             }
             product_list = get_products_orederd_by_price()
         else:
-            category = get_category()
+            category = get_category(pk)
             product_list = get_products_in_category_orederd_by_price(pk)
 
         paginator = Paginator(product_list, 2)
