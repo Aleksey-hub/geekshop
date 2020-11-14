@@ -28,6 +28,3 @@ class OrderItemForm(forms.ModelForm):
         self.fields['product'].queryset = Product.get_items().select_related()
         for field_name, field in self.fields.items():
             field.widget.attrs['class'] = 'form-control'
-
-    def __str__(self):
-        return f'{self.fields["product"]}'
