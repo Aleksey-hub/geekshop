@@ -80,4 +80,4 @@ class OrderItem(models.Model):
 
     @staticmethod
     def get_items():
-        return OrderItem.objects.all()
+        return OrderItem.objects.all().select_related()
