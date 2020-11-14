@@ -54,6 +54,13 @@ class Order(models.Model):
         self.is_active = False
         self.save()
 
+    def get_summary(self):
+        items = self.orderitems.select_related()
+        return {
+            'total_quantity': sum(list(map(lambda x: x.quantity, items))),
+            'total_cost': sum(list(map(lambda x: x.quantity * x.product.price, items)))
+        }
+
 
 # class OrderItemQuerySet(models.QuerySet):
 #
