@@ -150,7 +150,8 @@ def product_quantity_update_save(sender, update_fields, instance, **kwargs):
                 instance.product.quantity = F('quantity') - instance.quantity
             instance.product.save()
     else:
-        sender.set_item(instance.pk).quantity -= 1
+        basket = sender
+        basket.quantity -= 1
 
 
 @receiver(pre_delete, sender=Basket)
