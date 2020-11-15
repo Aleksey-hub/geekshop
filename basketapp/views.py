@@ -37,7 +37,7 @@ def basket_add(request, pk):
 
         update_queries = list(filter(lambda x: 'UPDATE' in x['sql'], connection.queries))
         print(f'query basket_add: {update_queries}')
-        assert False, update_queries
+        # assert False, update_queries
 
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
