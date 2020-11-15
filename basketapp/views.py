@@ -24,7 +24,7 @@ def basket_add(request, pk):
         return HttpResponseRedirect(reverse('products:product', args=[pk]))
 
     product_item = get_object_or_404(Product, pk=pk)
-    old_basket_item = Basket.objects.filter(product=product_item, user=request.user).first()
+    old_basket_item = Basket.objects.filter(product=product_item, user=request.user)#.first()
 
     if old_basket_item:
         # basket_list.quantity += 1
