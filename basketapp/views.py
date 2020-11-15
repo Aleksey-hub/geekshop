@@ -24,12 +24,12 @@ def basket_add(request, pk):
         return HttpResponseRedirect(reverse('products:product', args=[pk]))
 
     product_item = get_object_or_404(Product, pk=pk)
-    old_basket_item = Basket.objects.filter(product=product_item, user=request.user)#.first()
+    old_basket_item = Basket.objects.filter(product=product_item, user=request.user).first()
 
     if old_basket_item:
         # basket_list.quantity += 1
-        old_basket_item[0].quantity = F('quantity') + 1
-        old_basket_item[0].save()
+        old_basket_item.quantity = F('quantity') + 1
+        old_basket_item.save()
     else:
         new_basket_item = Basket(product=product_item, user=request.user)
         new_basket_item.quantity += 1
