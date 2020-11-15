@@ -1,4 +1,5 @@
 from django.contrib.auth.decorators import login_required
+from django.db.models import F
 from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import render, get_object_or_404
 from django.template.loader import render_to_string
@@ -27,7 +28,8 @@ def basket_add(request, pk):
     if not basket_list:
         basket_list = Basket.objects.create(product=product_item, user=request.user)
 
-    basket_list.quantity += 1
+    # basket_list.quantity += 1
+    basket_list.quantity = F('quantity') + 1
     basket_list.save()
 
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
