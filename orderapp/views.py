@@ -1,10 +1,11 @@
 from django.contrib.auth.decorators import login_required
 from django.db import transaction
+from django.db.models import F
 from django.db.models.signals import pre_save, pre_delete
 from django.dispatch import receiver
 from django.forms import inlineformset_factory
 from django.http import HttpResponseRedirect
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy, reverse
 from django.utils.decorators import method_decorator
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
@@ -142,7 +143,8 @@ def order_forming_complete(request, pk):
 def product_quantity_update_save(sender, update_fields, instance, **kwargs):
     if update_fields is 'quantity' or 'product':
         if instance.pk:
-            instance.product.quantity -= instance.quantity - sender.get_item(instance.pk).quantity
+            # instance.product.quantity -= instance.quantity - sender.get_item(instance.pk).quantity
+            instance.product.quantity = F('quantity') - instance.quantity + sender.get_item(instance.pk).quantity
         else:
             instance.product.quantity -= instance.quantity
         instance.product.save()
@@ -151,5 +153,6 @@ def product_quantity_update_save(sender, update_fields, instance, **kwargs):
 @receiver(pre_delete, sender=Basket)
 @receiver(pre_delete, sender=OrderItem)
 def product_quantity_update_delete(sender, instance, **kwargs):
-    instance.product.quantity += instance.quantity
+    # instance.product.quantity += instance.quantity
+    instance.product.quantity = F('quantity') + instance.quantity
     instance.product.save()
