@@ -24,16 +24,16 @@ def basket_add(request, pk):
         return HttpResponseRedirect(reverse('products:product', args=[pk]))
 
     product_item = get_object_or_404(Product, pk=pk)
-    basket_list = Basket.objects.filter(product=product_item, user=request.user).first()
+    old_basket_item = Basket.objects.filter(product=product_item, user=request.user).first()
 
-    if not basket_list:
-        basket_list = Basket.objects.create(product=product_item, user=request.user)
-        basket_list.quantity += 1
-        basket_list.save()
-    else:
+    if old_basket_item:
         # basket_list.quantity += 1
-        basket_list.quantity = F('quantity') + 1
-        basket_list.save()
+        old_basket_item[0].quantity = F('quantity') + 1
+        old_basket_item[0].save()
+    else:
+        new_basket_item = Basket(product=product_item, user=request.user)
+        new_basket_item.quantity += 1
+        new_basket_item.save()
 
         update_queries = list(filter(lambda x: 'UPDATE' in x['sql'], connection.queries))
         print(f'query basket_add: {update_queries}')
