@@ -2,6 +2,7 @@ import random
 
 from django.core.cache import cache
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from django.db.models import Q
 from django.shortcuts import render, get_object_or_404
 
 from geekshop import settings
@@ -118,6 +119,7 @@ def products(request, pk=None, page=1):
                 'pk': 0
             }
             product_list = get_products_orederd_by_price()
+            # product_list = Product.objects.filter(Q(category__pk=1) | Q(category__pk=2))
         else:
             category = get_category(pk)
             product_list = get_products_in_category_orederd_by_price(pk)
