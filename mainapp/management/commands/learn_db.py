@@ -5,11 +5,12 @@ from mainapp.models import Product
 from django.db import connection
 from django.db.models import Q, F, When, Case, IntegerField, DecimalField
 from adminapp.views import db_profile_by_type
+from orderapp.models import OrderItem
 
 
 class Command(BaseCommand):
 
-    def handle(self, OrderItem=None, *args, **options):
+    def handle(self, *args, **options):
         # test_products = Product.objects.filter(
         #     Q(category__name='офис') |
         #     Q(category__name='модерн')
