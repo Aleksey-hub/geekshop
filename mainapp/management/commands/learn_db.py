@@ -59,4 +59,4 @@ class Command(BaseCommand):
             )).order_by('action_order', 'total_price').select_related()
 
         for orderitem in test_orderss:
-            print(f' {orderitem.action_order: 2}: заказ № {orderitem.pk: 3}: {orderitem.product.name: 15}: скидка {abs(orderitem.total_price): 6.2 f} руб. | {orderitem.order.updated - orderitem.order.created} ')
+            print(f'{orderitem.action_order: 2}: заказ № {orderitem.pk: 3}: {orderitem.product.name: 15}: скидка {abs(orderitem.total_price): 6.2 f} руб. | {orderitem.order.updated - orderitem.order.created}')
