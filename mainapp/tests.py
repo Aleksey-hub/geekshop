@@ -33,4 +33,4 @@ class TestMainappTestCase(TestCase):
             self.assertEqual(response.status_code, 200)
 
     def tearDown(self):
-        call_command('sqlsequencereset', 'mainapp', 'authapp', 'ordersapp', 'basketapp')
+        call_command('sqlsequencereset', 'mainapp', 'authapp', 'orderapp', 'basketapp')
