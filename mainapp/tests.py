@@ -3,8 +3,6 @@ from django.test.client import Client
 from mainapp.models import Product, ProductCategory
 from django.core.management import call_command
 
-from orderapp.models import OrderItem
-
 
 class TestMainappTestCase(TestCase):
     def setUp(self):
