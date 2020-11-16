@@ -17,7 +17,7 @@ class ProductCategoryEditForm(forms.ModelForm):
     class Meta:
         model = ProductCategory
         # fields = '__all__'
-        exlude = ()
+        exclude = ()
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
