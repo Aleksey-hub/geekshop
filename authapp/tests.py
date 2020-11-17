@@ -36,4 +36,4 @@ class TestUserManagement(TestCase):
         # self.assertIn('Пользователь', response.content.decode())
 
     def tearDown(self):
-        call_command('sqlsequencereset', 'mainapp', 'authapp', 'ordersapp', 'basketapp')
+        call_command('sqlsequencereset', 'mainapp', 'authapp', 'orderapp', 'basketapp')
