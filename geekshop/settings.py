@@ -153,7 +153,7 @@ LOGIN_URL = '/auth/login/'
 
 LOGIN_ERROR_URL = '/'
 
-DOMAIN_NAME = 'http://5.63.157.18/'
+DOMAIN_NAME = 'http://5.63.157.18'
 # DOMAIN_NAME = 'http://localhost:8000'
 EMAIL_HOST = 'localhost'
 EMAIL_PORT = '25'
