@@ -43,9 +43,9 @@ INSTALLED_APPS = [
     'adminapp',
     'social_django',
     'orderapp',
-    'debug_toolbar',
-    'template_profiler_panel',
-    'django_extensions',
+    # 'debug_toolbar',
+    # 'template_profiler_panel',
+    # 'django_extensions',
 ]
 
 MIDDLEWARE = [
