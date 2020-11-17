@@ -20,7 +20,7 @@ def send_verify_mail(user):
 
 
 def verify(request, email, activation_key):
-    # try:
+    try:
         user = ShopUser.objects.get(email=email)
         if user.activation_key == activation_key and not user.if_activation_key_expired():
             user.is_active = True
@@ -29,9 +29,9 @@ def verify(request, email, activation_key):
             return render(request, 'authapp/verification.html')
         print(f'error activation user: {email}')
         return render(request, 'authapp/verification.html')
-    # except Exception as e:
-    #     print(e.args)
-    #     return HttpResponseRedirect(reverse('main'))
+    except Exception as e:
+        print(e.args)
+        return HttpResponseRedirect(reverse('main'))
 
 
 @csrf_exempt
