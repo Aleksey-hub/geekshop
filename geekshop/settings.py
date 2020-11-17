@@ -153,12 +153,13 @@ LOGIN_URL = '/auth/login/'
 
 LOGIN_ERROR_URL = '/'
 
-DOMAIN_NAME = 'http://localhost'
-# DOMAIN_NAME = 'http://5.63.157.18'
-EMAIL_HOST = 'localhost'
+# DOMAIN_NAME = 'http://localhost'
+DOMAIN_NAME = 'http://5.63.157.18'
+# EMAIL_HOST = 'localhost'
+EMAIL_HOST = '5.63.157.18'
 EMAIL_PORT = '25'
-EMAIL_HOST_USER = 'django@geekshop.local'
-EMAIL_HOST_PASSWORD = 'geekshop'
+# EMAIL_HOST_USER = 'django@geekshop.local'
+# EMAIL_HOST_PASSWORD = 'geekshop'
 EMAIL_USE_SSL = False
 
 # вариант python -m smtpd -n -c DebuggingServer localhost:25
