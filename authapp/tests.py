@@ -9,7 +9,7 @@ class TestUserManagement(TestCase):
         call_command('flush', '--noinput')
         call_command('loaddata', 'test_db.json')
         self.client = Client()
-        self.superuser = ShopUser.objects.create_superuser('django2', 'django2@geekshop.local', 'geekbrains')
+        self.superuser = ShopUser.objects.create_superuser('django_superuser', 'django_superuser@geekshop.local', 'geekbrains')
         self.user = ShopUser.objects.create_user('tarantino', 'tarantino@geekshop.local', 'geekbrains')
         self.user_with__first_name = ShopUser.objects.create_user('umaturman', 'umaturman@geekshop.local', 'geekbrains',
                                                                   first_name='Ума')
