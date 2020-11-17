@@ -1,8 +1,9 @@
-from django.conf import settings
 from django.test import TestCase
 from django.test.client import Client
 from authapp.models import ShopUser
 from django.core.management import call_command
+
+from geekshop import settings
 
 
 class TestUserManagement(TestCase):
