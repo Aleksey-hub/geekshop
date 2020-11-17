@@ -34,7 +34,7 @@ def verify(request, email, activation_key):
         return HttpResponseRedirect(reverse('main'))
 
 
-@csrf_exempt
+# @csrf_exempt
 def login(request):
     title = 'вход'
 
