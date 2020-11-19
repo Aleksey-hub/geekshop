@@ -6,12 +6,6 @@
     <li class="menu-list menu-list-2"><a href="{% url 'products:index' %}"
                                          class="menu-link {% if request.resolver_match.namespace == 'products' %}menu-link-active{% endif %}">PRODUCTS</a>
     </li>
-    <li class="menu-list menu-list-3"><a href="#"
-                                         class="menu-link {% if request.resolver_match.url_name == '' %}menu-link-active{% endif %}">HISTORY</a>
-    </li>
-    <li class="menu-list menu-list-4"><a href="#"
-                                         class="menu-link {% if request.resolver_match.url_name == '' %}menu-link-active{% endif %}">SHOWROOM</a>
-    </li>
     <li class="menu-list menu-list-5"><a href="{% url 'contact' %}"
                                          class="menu-link {% if request.resolver_match.url_name == 'contact' %}menu-link-active{% endif %}">CONTACT</a>
     </li>
